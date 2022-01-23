@@ -4,5 +4,5 @@ Ready to use `og-image` generator based on [Michael Heap article](https://michae
 
 ## Usage
 
--   `yarn dev` – to preview template
--   `yarn build` – build package
+- `yarn dev` – to preview template
+- `yarn build` – build package
