@@ -3,13 +3,13 @@ const puppeteer = require('puppeteer-core');
 const { builder } = require('@netlify/functions');
 const fs = require('fs').promises;
 
-exports.handler = builder(async function (event, context) {
+exports.handler = builder(async function (event) {
   const { template, ...params } = Object.fromEntries(
     event.path
-      .split("/")
-      .filter((p) => p.includes("="))
+      .split('/')
+      .filter((p) => p.includes('='))
       .map(decodeURIComponent)
-      .map((s) => s.split("=", 2))
+      .map((s) => s.split('=', 2)),
   );
 
   const browser = await puppeteer.launch({
@@ -35,9 +35,9 @@ exports.handler = builder(async function (event, context) {
   return {
     statusCode: 200,
     headers: {
-      "Content-Type": "image/png",
+      'Content-Type': 'image/png',
     },
-    body: buffer.toString("base64"),
+    body: buffer.toString('base64'),
     isBase64Encoded: true,
   };
 });
