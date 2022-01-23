@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "parcel serve ./src/template.html",
     "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;",
-    "lint": "eslint --fix src/*.js"
+    "lint": "eslint --fix src/*.js; prettier --write .;"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.2.1",
