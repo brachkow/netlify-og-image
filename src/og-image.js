@@ -20,7 +20,7 @@ exports.handler = builder(async function (event, context) {
   });
 
   let htmlPage = (
-    await fs.readFile(require.resolve(`./templates/${template}.html`))
+    await fs.readFile(require.resolve(`./${template}.html`))
   ).toString();
 
   for (const k in params) {
