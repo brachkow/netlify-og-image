@@ -1,0 +1,16 @@
+{
+  "name": "netlify-og-image",
+  "scripts": {
+    "dev": "parcel serve ./src/template.html",
+    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
+    "normalize.css": "^8.0.1",
+    "puppeteer-core": "^13.1.1"
+  }
+}
