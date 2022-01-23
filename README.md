@@ -11,6 +11,6 @@ Ready to use og-image generator for netlify functions
 
 # Example
 This string
-`https://deploy-preview-1--netlify-og-image.netlify.app/.netlify/functions/og-image/template=template/title=netlify-og-image/description=Ready to use og-image generator for netlify functions` outputs:
+`https://netlify-og-image.netlify.app/.netlify/functions/og-image/template=template/title=netlify-og-image/description=Ready to use og-image generator for netlify functions` outputs:
 
 ![og-image](https://netlify-og-image.netlify.app/.netlify/functions/og-image/template=template/title=netlify-og-image/description=Ready%20to%20use%20og-image%20generator%20for%20netlify%20functions)
