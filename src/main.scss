@@ -1,0 +1,18 @@
+@import '../node_modules/normalize.css/normalize.css';
+
+body {
+  padding: 32px;
+  font-family: sans-serif;
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  color: white;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 32px;
+  font-weight: medium;
+}

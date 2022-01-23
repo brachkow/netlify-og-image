@@ -1,0 +1,25 @@
+{
+  "name": "netlify-og-image",
+  "scripts": {
+    "dev": "parcel serve ./src/template.html",
+    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;",
+    "lint": "eslint --fix src/*.js; prettier --write .;",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@parcel/transformer-sass": "^2.2.1",
+    "eslint": "^8.7.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.0",
+    "parcel": "^2.2.1",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "@netlify/functions": "^0.11.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "normalize.css": "^8.0.1",
+    "puppeteer-core": "^13.1.1"
+  }
+}
