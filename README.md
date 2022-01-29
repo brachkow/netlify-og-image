@@ -2,8 +2,6 @@
 
 Ready to use `og-image` generator for netlify functions. Based on [Michael Heap article](https://michaelheap.com/og-image-netlify-on-demand-builders/). Includes CSS-reset and bundler to remove styling headaches.
 
-Ready to use og-image generator for netlify functions
-
 ## Usage
 
 - `yarn dev` – to preview template
