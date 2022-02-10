@@ -9,7 +9,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@parcel/transformer-sass": "^2.2.1",
+    "@parcel/transformer-sass": "^2.3.0",
     "eslint": "^8.7.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.1",
