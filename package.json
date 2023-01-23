@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",
-    "chrome-aws-lambda": "^10.1.0",
+    "chrome-aws-lambda": "~7.0.0",
     "normalize.css": "^8.0.1",
-    "puppeteer-core": "^15.3.0"
+    "puppeteer-core": "~7.0.0"
   }
 }
