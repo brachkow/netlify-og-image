@@ -1,15 +1,18 @@
 {
   "name": "netlify-og-image",
   "scripts": {
-    "dev": "parcel serve ./src/template.html",
-    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;",
+    "serve:template": "parcel serve ./src/template.html",
+    "build:template": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/",
+    "build:function": "tsc",
+    "build": "yarn build:template; yarn build:function;",
     "lint": "eslint --fix src/*.js; prettier --write .;"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.2.1",
     "eslint": "^8.9.0",
     "parcel": "^2.2.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",
