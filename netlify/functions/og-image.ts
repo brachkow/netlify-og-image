@@ -7,12 +7,6 @@ const handler: Handler = async (
   event: HandlerEvent,
   context: HandlerContext,
 ) => {
-  let localChrome =
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-  let executable = existsSync(localChrome)
-    ? localChrome
-    : chromium.executablePath;
-
   const params = {};
 
   event.rawQuery.split('&').forEach((queryParamString) => {
@@ -20,18 +14,24 @@ const handler: Handler = async (
     params[key] = value;
   });
 
+  let content = readFileSync(__dirname + `/${params.template}.html`).toString();
+
+  for (const param in params) {
+    content = content.replace(`{${param}}`, params[param]);
+  }
+
+  let localChrome =
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  let executable = existsSync(localChrome)
+    ? localChrome
+    : chromium.executablePath;
+
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: { height: 630, width: 1200 },
     executablePath: await executable,
     headless: chromium.headless,
   });
-
-  let content = readFileSync(__dirname + `/${params.template}.html`).toString();
-
-  for (const param in params) {
-    content = content.replace(`{${param}}`, params[param]);
-  }
 
   const page = await browser.newPage();
   await page.setContent(content, { waitUntil: 'networkidle0' });
