@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "parcel serve ./src/template.html",
-    "build:template": "parcel build ./src/template.html --no-cache --dist-dir ./netlify/functions/;",
+    "build:template": "parcel build ./src/template.html --no-cache --dist-dir ./netlify/functions/og-image;",
     "build:function": "rollup -c --bundleConfigAsCjs",
     "build": "yarn build:template; yarn build:function",
     "lint": "eslint --fix src/*.js; prettier --write .;"
