@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "parcel serve ./src/template.html",
-    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/;",
+    "build:template": "parcel build ./src/template.html --dist-dir ./netlify/functions/;",
+    "build:function": "rollup -c --bundleConfigAsCjs",
+    "build": "yarn build:template; yarn build:function",
     "lint": "eslint --fix src/*.js; prettier --write .;"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
+    "@rollup/plugin-typescript": "^11.0.0",
     "eslint": "^8.32.0",
     "parcel": "^2.8.3",
-    "prettier": "^2.8.3"
+    "prettier": "^2.8.3",
+    "rollup": "^3.10.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "@netlify/functions": "^1.4.0",
