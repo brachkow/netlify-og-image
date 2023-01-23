@@ -2,7 +2,7 @@
   "name": "netlify-og-image",
   "scripts": {
     "dev": "parcel serve ./src/template.html",
-    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;",
+    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/;",
     "lint": "eslint --fix src/*.js; prettier --write .;"
   },
   "devDependencies": {

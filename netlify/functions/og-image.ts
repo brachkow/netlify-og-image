@@ -1,9 +1,12 @@
-const chromium = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core');
-const { builder } = require('@netlify/functions');
-const fs = require('fs').promises;
+import { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
+import chromium from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer-core';
+import { readFile } from 'fs';
 
-exports.handler = builder(async function (event) {
+const handler: Handler = async (
+  event: HandlerEvent,
+  context: HandlerContext,
+) => {
   const { template, ...params } = Object.fromEntries(
     event.path
       .split('/')
@@ -20,7 +23,7 @@ exports.handler = builder(async function (event) {
   });
 
   let htmlPage = (
-    await fs.readFile(require.resolve(`./${template}.html`))
+    await readFile(require.resolve(`./${template}.html`))
   ).toString();
 
   for (const k in params) {
@@ -40,4 +43,6 @@ exports.handler = builder(async function (event) {
     body: buffer.toString('base64'),
     isBase64Encoded: true,
   };
-});
+};
+
+export { handler };
