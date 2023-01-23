@@ -1,25 +1,28 @@
 {
   "name": "netlify-og-image",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "parcel serve ./src/template.html",
-    "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/og-image/; cp ./src/og-image.js ./netlify/functions/og-image/;",
-    "lint": "eslint --fix src/*.js; prettier --write .;",
-    "prepare": "husky install"
+    "serve:template": "parcel serve ./src/template.html",
+    "build:template": "parcel build ./src/template.html --no-cache --dist-dir ./netlify/functions/og-image",
+    "build:function": "rollup -c --bundleConfigAsCjs",
+    "clean": "rm -rf ./netlify",
+    "build": "yarn clean; yarn build:template; yarn build:function;",
+    "lint": "eslint --fix src/*.js; prettier --write .;"
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.1",
-    "@commitlint/config-conventional": "^17.0.3",
     "@parcel/transformer-sass": "^2.2.1",
+    "@rollup/plugin-typescript": "^11.0.0",
     "eslint": "^8.9.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.3.4",
     "parcel": "^2.2.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "rollup": "^3.10.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@netlify/functions": "^1.0.0",
-    "chrome-aws-lambda": "^10.1.0",
+    "@netlify/functions": "^1.4.0",
+    "chrome-aws-lambda": "~7.0.0",
     "normalize.css": "^8.0.1",
-    "puppeteer-core": "^15.3.0"
+    "puppeteer-core": "~7.0.0"
   }
 }
