@@ -7,17 +7,14 @@ const handler: Handler = async (
   event: HandlerEvent,
   context: HandlerContext,
 ) => {
-  const params = {};
+  const template = event.rawUrl.match(/template\/([\w]*)/)?.at(1);
 
-  event.rawQuery.split('&').forEach((queryParamString) => {
-    const [key, value] = queryParamString.split('=');
-    params[key] = value;
-  });
+  const { ...params } = event.queryStringParameters;
 
-  let content = readFileSync(__dirname + `/${params.template}.html`).toString();
+  let content = readFileSync(__dirname + `/${template}.html`).toString();
 
   for (const param in params) {
-    content = content.replace(`{${param}}`, params[param]);
+    content = content.replace(`{${param}}`, param);
   }
 
   let localChrome =
