@@ -12,7 +12,7 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "@netlify/functions": "^1.0.0",
+    "@netlify/functions": "^1.4.0",
     "chrome-aws-lambda": "^10.1.0",
     "normalize.css": "^8.0.1",
     "puppeteer-core": "^15.3.0"
