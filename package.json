@@ -1,5 +1,6 @@
 {
   "name": "netlify-og-image",
+  "version": "1.0.0",
   "scripts": {
     "dev": "parcel serve ./src/template.html",
     "build": "parcel build ./src/template.html --dist-dir ./netlify/functions/;",
