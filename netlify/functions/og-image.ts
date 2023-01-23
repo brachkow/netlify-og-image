@@ -1,8 +1,7 @@
 import { Handler, HandlerEvent, HandlerContext } from '@netlify/functions';
 import chromium from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer-core';
-import { readFile } from 'fs';
-import { existsSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 
 const handler: Handler = async (
   event: HandlerEvent,
@@ -28,25 +27,22 @@ const handler: Handler = async (
     headless: chromium.headless,
   });
 
-  let htmlPage = (
-    await readFile(require.resolve(`./${template}.html`))
-  ).toString();
+  let content = readFileSync(__dirname + `/${params.template}.html`).toString();
 
   for (const param in params) {
     content = content.replace(`{${param}}`, params[param]);
   }
 
   const page = await browser.newPage();
-  await page.setContent(htmlPage);
-  await page.waitForTimeout(1000);
-  const buffer = await page.screenshot();
+  await page.setContent(content, { waitUntil: 'networkidle0' });
+  const screenshot = await page.screenshot();
 
   return {
     statusCode: 200,
     headers: {
       'Content-Type': 'image/png',
     },
-    body: buffer.toString('base64'),
+    body: screenshot.toString('base64'),
     isBase64Encoded: true,
   };
 };
