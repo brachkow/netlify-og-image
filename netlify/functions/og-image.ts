@@ -8,18 +8,18 @@ const handler: Handler = async (
   event: HandlerEvent,
   context: HandlerContext,
 ) => {
-  const { template, ...params } = Object.fromEntries(
-    event.path
-      .split('/')
-      .filter((p) => p.includes('='))
-      .map(decodeURIComponent)
-      .map((s) => s.split('=', 2)),
-  );
   let localChrome =
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   let executable = existsSync(localChrome)
     ? localChrome
     : chromium.executablePath;
+
+  const params = {};
+
+  event.rawQuery.split('&').forEach((queryParamString) => {
+    const [key, value] = queryParamString.split('=');
+    params[key] = value;
+  });
 
   const browser = await puppeteer.launch({
     args: chromium.args,
@@ -32,8 +32,8 @@ const handler: Handler = async (
     await readFile(require.resolve(`./${template}.html`))
   ).toString();
 
-  for (const k in params) {
-    htmlPage = htmlPage.replace(`{${k}}`, params[k]);
+  for (const param in params) {
+    content = content.replace(`{${param}}`, params[param]);
   }
 
   const page = await browser.newPage();
