@@ -12,7 +12,7 @@
     "@parcel/transformer-sass": "^2.2.1",
     "eslint": "^8.9.0",
     "husky": "^8.0.1",
-    "lint-staged": "^12.3.4",
+    "lint-staged": "^13.1.2",
     "parcel": "^2.2.1",
     "prettier": "^2.5.1"
   },
